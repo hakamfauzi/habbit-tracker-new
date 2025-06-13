@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Head from "next/head";
+import Link from "next/link";
 
 export default function Dashboard() {
     const [healthStatus] = useState({
@@ -62,9 +63,9 @@ export default function Dashboard() {
             </div>
 
             <nav className="space-y-2">
-                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-purple-200 rounded">Dashboard</a>
-                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-purple-200 rounded">Profile</a>
-                <a href="#" className="block px-4 py-2 text-gray-700 hover:bg-purple-200 rounded">Add Habit</a>
+                <Link href="/add" className="block px-4 py-2 text-gray-700 hover:bg-purple-200 rounded">Dashboard</Link>
+                <Link href="/profile" className="block px-4 py-2 text-gray-700 hover:bg-purple-200 rounded">Profile</Link>
+                <Link href="/optioncreate" className="block px-4 py-2 text-gray-700 hover:bg-purple-200 rounded">Add Habit</Link>
             </nav>
             </aside>
 

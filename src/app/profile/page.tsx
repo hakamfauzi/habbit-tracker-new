@@ -24,7 +24,7 @@ export default function Profile() {
     // Inisialisasi data profil hanya di sisi klien
     useEffect(() => {
         setProfileData({
-        name: "Labib",
+        name: "Labib Hakam Fauzi",
         totalStreak: 20,
         tasksCompleted: 25,
         });
@@ -32,9 +32,9 @@ export default function Profile() {
 
     // Sidebar menu
     const sidebarMenu = [
-        { label: "Dashboard", href: "#" },
-        { label: "Profile", href: "#" },
-        { label: "Add Habit", href: "#" },
+        { label: "Dashboard", href: "/dashboard" },
+        { label: "Profile", href: "/profile" },
+        { label: "Add Habit", href: "/add" },
     ];
 
     return (
@@ -86,7 +86,7 @@ export default function Profile() {
             {/* Profile Card */}
             <div className="bg-purple-200 rounded-md p-4 mb-4">
                 <div className="flex items-center space-x-4">
-                <img src="https://source.unsplash.com/random/60x60/?user" alt="Profile Picture" className="w-12 h-12 rounded-full" />
+                <img src="/hakam.jpg" alt="Profile Picture" className="w-20 h-20 rounded-full" />
                 <div>
                     <h2 className="text-xl font-medium">{profileData.name || "Loading..."}</h2>
                     <p className="text-sm text-gray-500">Name</p>
