@@ -99,7 +99,7 @@ const ResultAddPage = () => {
               ) : (
                 <>
                   <img
-                    src={/${time}.png}
+                    src={`/${time}.png`}
                     alt={time}
                     className="w-6 h-6 mx-auto mb-1"
                   />
