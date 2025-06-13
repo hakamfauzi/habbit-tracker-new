@@ -63,7 +63,7 @@ export default function Dashboard() {
             </div>
 
             <nav className="space-y-2">
-                <Link href="/add" className="block px-4 py-2 text-gray-700 hover:bg-purple-200 rounded">Dashboard</Link>
+                <Link href="/#" className="block px-4 py-2 text-gray-700 hover:bg-purple-200 rounded">Dashboard</Link>
                 <Link href="/profile" className="block px-4 py-2 text-gray-700 hover:bg-purple-200 rounded">Profile</Link>
                 <Link href="/optioncreate" className="block px-4 py-2 text-gray-700 hover:bg-purple-200 rounded">Add Habit</Link>
             </nav>

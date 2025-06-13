@@ -2,6 +2,7 @@
 
 import Head from "next/head";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function OptionCreate() {
   // State untuk mengelola data form
@@ -67,12 +68,14 @@ export default function OptionCreate() {
             <h1 className="text-center text-2xl font-bold mb-4">Add New Habit</h1>
 
             {/* Create Custom Habit Button */}
+            <Link href="/add">
             <button className="w-full bg-purple-200 hover:bg-purple-300 text-white font-semibold py-2 px-4 rounded mb-4 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 Create custom habit
             </button>
+            </Link>
 
             {/* Your Habits */}
             <div className="mb-4">
