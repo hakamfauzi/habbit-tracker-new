@@ -8,10 +8,16 @@ import { useRouter } from "next/navigation"; // ✅ For routing
 export default function OptionCreate() {
   const [habits, setHabits] = useState<any[]>([]);
   const router = useRouter();
-  const userId = 1; // Replace with dynamic user ID from auth if needed
+  // const userId = 1; // Replace with dynamic user ID from auth if needed
+  const [userId, setUserId] = useState<number | null>(null);
 
   // Fetch user-specific habits
   useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      setUserId(user.id); // ✅ Access id after parsing
+    }
     const fetchHabits = async () => {
       try {
         const res = await fetch(`http://localhost:8000/api/users/${userId}/habits`);

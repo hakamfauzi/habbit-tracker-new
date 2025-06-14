@@ -36,10 +36,13 @@ export default function RegisterPage() {
         body: JSON.stringify({ name, email, password }),
       });
 
+      const data = await res.json(); // 🔁 Only call this ONCE
+
       if (!res.ok) {
-        const data = await res.json();
         throw new Error(data.message || "Registration failed");
       }
+
+      localStorage.setItem('user', JSON.stringify(data));
 
       setSuccess("Account created successfully. You can now login.");
       setName("");

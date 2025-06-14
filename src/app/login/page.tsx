@@ -32,6 +32,7 @@ export default function LoginPage() {
 
       const data = await res.json();
       console.log('Login success:', data); // ✅ Optional: save token if needed
+      localStorage.setItem('user', JSON.stringify(data.user));
 
       router.push('/dashboard');
     } catch (err: unknown) {

@@ -8,9 +8,15 @@ const ResultAddPage = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [habit, setHabit] = useState<any>(null)
+  const [userId, setUserId] = useState<number | null>(null);
 
   useEffect(() => {
     const data = searchParams.get('pageData')
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const user = JSON.parse(storedUser);
+      setUserId(user.id); // ✅ Access id after parsing
+    }
     if (data) {
       setHabit(JSON.parse(data))
     }
@@ -29,7 +35,7 @@ const ResultAddPage = () => {
   }
 
   const handleSubmit = async () => {
-    const userId = 1 // TODO: replace with actual user ID from auth
+    // const userId = 1 // TODO: replace with actual user ID from auth
 
     const payload = {
       name: habit.name,

@@ -7,6 +7,7 @@ import Image from 'next/image';
 const EditHabitPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [userId, setUserId] = useState<number | null>(null);
 
   const [habit, setHabit] = useState<any>(null);
   const [formData, setFormData] = useState({
@@ -20,9 +21,18 @@ const EditHabitPage = () => {
   });
 
   const habitId = searchParams.get('habitId');
-  const userId = 1;
+  // const userId = 1;
 
   useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+      if (storedUser) {
+        const user = JSON.parse(storedUser);
+        setUserId(user.id); // ✅ Access id after parsing
+      }
+  }, [])
+
+  useEffect(() => {
+    if (!userId || !habitId) return;
     const fetchHabit = async () => {
       try {
         const res = await fetch(`http://localhost:8000/api/users/${userId}/habits`);
@@ -39,7 +49,7 @@ const EditHabitPage = () => {
     if (habitId) {
       fetchHabit();
     }
-  }, [habitId]);
+  }, [userId, habitId]);
 
   useEffect(() => {
     if (habit) {
@@ -208,7 +218,7 @@ const EditHabitPage = () => {
             if (!res.ok) throw new Error('Failed to delete');
 
             alert('Habit deleted successfully!');
-            router.push('/'); // Redirect after deletion
+            router.push('/dashboard'); // Redirect after deletion
             } catch (error) {
             console.error('Delete failed:', error);
             alert('Failed to delete the habit.');
@@ -242,7 +252,7 @@ const EditHabitPage = () => {
                 if (!res.ok) throw new Error('Failed to update habit');
 
                 alert('Habit updated successfully!');
-                router.push('/'); // Redirect to homepage or habit list
+                router.push('/dashboard'); // Redirect to homepage or habit list
             } catch (error) {
                 console.error('Update failed:', error);
                 alert('Failed to update habit.');
