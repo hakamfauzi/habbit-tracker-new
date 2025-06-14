@@ -23,11 +23,15 @@ export default function Profile() {
 
     // Inisialisasi data profil hanya di sisi klien
     useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+        const user = JSON.parse(storedUser);
         setProfileData({
-        name: "Labib Hakam Fauzi",
-        totalStreak: 20,
-        tasksCompleted: 25,
+            name: user.name || '',
+            totalStreak: user.totalStreak || 0,
+            tasksCompleted: user.tasksCompleted || 0,
         });
+        }
     }, []);
 
     // Sidebar menu
